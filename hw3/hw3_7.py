@@ -60,7 +60,7 @@ class Triangle(Shape):
 
 class Cone(Shape):
     def draw(self):
-        
+
         cone_top = (400, 100)
         cone_base_left = (350, 200)
         cone_base_right = (450, 200)
@@ -71,7 +71,9 @@ class Cone(Shape):
 
         for x in range(350, 451):
             brightness = int(100 + 155 * (x - 350) / 100)
-            draw_grad.line([(x, 100), (x, 200)], fill=(brightness, brightness, brightness))
+            draw_grad.line(
+                [(x, 100), (x, 200)], fill=(brightness, brightness, brightness)
+            )
 
         mask = Image.new("L", self.im.size, 0)
         mask_draw = ImageDraw.Draw(mask)
@@ -79,14 +81,16 @@ class Cone(Shape):
 
         self.im.paste(gradient_layer, (0, 0), mask)
 
-#-------------------------------------------------------------------------
+        # -------------------------------------------------------------------------
 
         base_layer = Image.new("RGB", self.im.size)
         draw_base = ImageDraw.Draw(base_layer)
 
         for x in range(350, 451):
             brightness = int(100 + 155 * (x - 350) / 100)
-            draw_base.line([(x, 190), (x, 210)], fill=(brightness, brightness, brightness))
+            draw_base.line(
+                [(x, 190), (x, 210)], fill=(brightness, brightness, brightness)
+            )
 
         base_mask = Image.new("L", self.im.size, 0)
         base_mask_draw = ImageDraw.Draw(base_mask)
@@ -105,7 +109,7 @@ class Cone(Shape):
         print("Image with cone was created")
         return self.im.save("draw-cone.png", quality=95)
 
-    
+
 class Paraboloid(Shape):
     def draw(self):
         ellipse_bot = (100, -100, 400, 500)
@@ -116,14 +120,16 @@ class Paraboloid(Shape):
 
         for x in range(-100, 501):
             brightness = 255 - int(100 + 155 * (x - 300) / 100)
-            draw_grad.line([(x, -100), (x, 500)], fill=(brightness, brightness, brightness))
-        
+            draw_grad.line(
+                [(x, -100), (x, 500)], fill=(brightness, brightness, brightness)
+            )
+
         mask_bot = Image.new("L", self.im.size, 0)
         mask_bot_draw = ImageDraw.Draw(mask_bot)
         mask_bot_draw.pieslice(ellipse_bot, 0, 180, fill=255)
 
         self.im.paste(gradient_layer, (0, 0), mask_bot)
-#----------------------------------------------------------------------------------------------        
+        # ----------------------------------------------------------------------------------------------
         ellipse_top = (100, 150, 400, 250)
         self.draw1.ellipse(ellipse_top, fill=(255, 255, 255))
 
@@ -132,16 +138,18 @@ class Paraboloid(Shape):
 
         for y in range(150, 250):
             brightness = 255 - (int(100 + 155 * (y - 200) / 100))
-            draw_grad.line([(100, y), (400, y)], fill=(brightness, brightness, brightness))
-        
+            draw_grad.line(
+                [(100, y), (400, y)], fill=(brightness, brightness, brightness)
+            )
+
         mask_top = Image.new("L", self.im.size, 0)
         mask_top_draw = ImageDraw.Draw(mask_top)
         mask_top_draw.ellipse(ellipse_top, fill=255)
 
         self.im.paste(gradient_layer, (0, 0), mask_top)
-        
+
         # self.draw1.arc(ellipse_top, start=0, end=360, fill=(60, 60, 60), width=4)
-    
+
     def erase(self):
         self.draw1.pieslice((100, -100, 400, 500), 0, 180, fill=self.back_color)
         self.draw1.ellipse((100, 150, 400, 250), fill=self.back_color)
