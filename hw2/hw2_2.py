@@ -6,7 +6,7 @@ class Rectangle:
     def __str__(self):
         return f'length: {self.length}\nwidth: {self.width}\ncolor: {self.color}'
 
-class Button():
+class Button:
     def __init__(self, size:int, color:str):
         self.size = size
         self.button_color = color
