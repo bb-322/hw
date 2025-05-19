@@ -25,11 +25,10 @@ while True:
             if not department.isalpha():
                 raise TypeError("must be a str")
 
-            try:  # Не понял как сделать чтоб выводилась только 1 ошибка
-                year = int(input("year: "))
-            except ValueError:
-                raise ValueError("must be int")
-
+            year = input("year: ")
+            if not year.isdigit():
+                raise TypeError('must be int')
+            
             new_worker = Worker(name, surname, department, year)
             workers.append(new_worker)
 
