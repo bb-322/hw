@@ -6,6 +6,15 @@ class Worker:
         self._department = department
         self._start_year = start_year
 
+        if not self._name.isalpha():
+            raise TypeError("name must be letters")
+        if not self._surname.isalpha():
+            raise TypeError("surname must be letters")
+        if not self._department.isalpha():
+            raise TypeError("department must be letters")
+        if not self._start_year.isdigit():
+            raise TypeError('year must be numbers')
+
 
 workers = []
 
@@ -14,20 +23,12 @@ while True:
     match act:
         case 1:
             name = input("name: ")
-            if not name.isalpha():
-                raise TypeError("must be a str")
 
             surname = input("surname: ")
-            if not surname.isalpha():
-                raise TypeError("must be a str")
 
             department = input("department: ")
-            if not department.isalpha():
-                raise TypeError("must be a str")
 
             year = input("year: ")
-            if not year.isdigit():
-                raise TypeError('must be int')
             
             new_worker = Worker(name, surname, department, year)
             workers.append(new_worker)
