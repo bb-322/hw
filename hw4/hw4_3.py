@@ -1,5 +1,13 @@
+class MyException(BaseException):
+    def __init__(self, *args):
+        super().__init__(*args)
+        self.message = args[0]
+
+    def __str__(self):
+        return f'{self.message}'
+
 class Worker:
-    def __init__(self, name: str, surname: str, department: str, start_year: int):
+    def __init__(self, name: str, surname: str, department: str, start_year: str):
 
         self._name = name
         self._surname = surname
@@ -7,13 +15,13 @@ class Worker:
         self._start_year = start_year
 
         if not self._name.isalpha():
-            raise TypeError("name must be letters")
+            raise MyException("name must be letters")
         if not self._surname.isalpha():
-            raise TypeError("surname must be letters")
+            raise MyException("surname must be letters")
         if not self._department.isalpha():
-            raise TypeError("department must be letters")
+            raise MyException("department must be letters")
         if not self._start_year.isdigit():
-            raise TypeError('year must be numbers')
+            raise MyException('year must be numbers')
 
 
 workers = []
