@@ -1,7 +1,5 @@
 class Contact:
-    def __init__(
-        self, surname: str, name: str, age: int, mob_phone: int, email: str
-    ):
+    def __init__(self, surname: str, name: str, age: int, mob_phone: int, email: str):
         self._surname = surname
         self._name = name
         self._age = age
@@ -17,17 +15,15 @@ class Contact:
 
     @classmethod
     def send_message(cls):
-        cls._text = input('Message text: ')
+        cls._text = input("Message text: ")
         phone_number = int(input("Enter reciever's phone number: "))
         try:
             reciever = next(r for r in contacts if r._mob_phone == phone_number)
             reciever_info = [reciever._name, reciever._surname]
-            reciever = ' '.join(reciever_info)
-            print(
-                f"Sent: \n\t'{cls._text}'\nto {reciever}"
-            )
+            reciever = " ".join(reciever_info)
+            print(f"Sent: \n\t'{cls._text}'\nto {reciever}")
         except StopIteration:
-            print('No contact with this number in contacts')
+            print("No contact with this number in contacts")
 
 
 class UpdateContact(Contact):
@@ -46,12 +42,11 @@ class UpdateContact(Contact):
         try:
             sender = next(s for s in contacts if s._mob_phone == phone_number)
             sender_info = [sender._name, sender._surname]
-            sender = ' '.join(sender_info)
-            print(
-                f"Recieved: \n\t'{cls._text}'\nfrom {sender}"
-            )
+            sender = " ".join(sender_info)
+            print(f"Recieved: \n\t'{cls._text}'\nfrom {sender}")
         except StopIteration:
-            print('No contact with this number in contacts')
+            print("No contact with this number in contacts")
+
 
 mob_phones = {}
 contacts = []
@@ -60,28 +55,30 @@ per1 = Contact("Woodman", "James", "99", 1234567890, "email1@gmail.com")
 per2 = Contact("Hooman", "Jon", "20", 9876543210, "email2@gmail.com")
 per3 = Contact("Goober", "Goober", "40", 5555555555, "email3@gmail.com")
 
-per2_upd = UpdateContact("Per2_s", "Per2_n", 100, 1234512345, "email2upd@gmail.com", "job")
+per2_upd = UpdateContact(
+    "Per2_s", "Per2_n", 100, 1234512345, "email2upd@gmail.com", "job"
+)
 
 per1.get_contact()
 per2_upd.get_contact()
 # per1.send_message()
 # per2_upd.get_message()
 
-print(hasattr(per1, '_job'))
-print(hasattr(per1, '_name'))
-print(getattr(per1, '_name'))
-setattr(per1, '_name', 'new_per1_name')
-print(getattr(per1, '_name'))
-delattr(per1, '_name')
-print(hasattr(per1, '_name'))
+print(hasattr(per1, "_job"))
+print(hasattr(per1, "_name"))
+print(getattr(per1, "_name"))
+setattr(per1, "_name", "new_per1_name")
+print(getattr(per1, "_name"))
+delattr(per1, "_name")
+print(hasattr(per1, "_name"))
 
-print(hasattr(per2_upd, '_job'))
-print(hasattr(per2_upd, '_name'))
-print(getattr(per2_upd, '_name'))
-setattr(per2_upd, '_name', 'new_per2_upd_name')
-print(getattr(per2_upd, '_name'))
-delattr(per2_upd, '_name')
-print(hasattr(per2_upd, '_name'))
+print(hasattr(per2_upd, "_job"))
+print(hasattr(per2_upd, "_name"))
+print(getattr(per2_upd, "_name"))
+setattr(per2_upd, "_name", "new_per2_upd_name")
+print(getattr(per2_upd, "_name"))
+delattr(per2_upd, "_name")
+print(hasattr(per2_upd, "_name"))
 
 print(isinstance(per1, Contact))
 print(isinstance(per1, UpdateContact))
@@ -101,7 +98,7 @@ print(Contact.__bases__)
 print(UpdateContact.__bases__)
 
 print(per2_upd.__dict__)
-delattr(per2_upd, '_job')
+delattr(per2_upd, "_job")
 print(per2_upd.__dict__)
 print(per1.__dict__)
 
