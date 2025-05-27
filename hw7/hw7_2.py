@@ -9,11 +9,15 @@ def generator(iter):
 
 my_list = [10, 4, 100, 53, 11, 35, 49, 20]
 
+sqr_list_gen = []
 for num in generator(my_list):
-    print(num)
+    sqr_list_gen.append(num)
+print(sqr_list_gen)
 
-print('----------------------------------')
 
+sqr_list = []
 for num in my_list:
     if num % 2 == 0:
-        print(num**2)
+        result = num ** 2
+        sqr_list.append(result)
+print(sqr_list)
