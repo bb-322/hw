@@ -1,0 +1,6 @@
+2025-06-04 14:32:10 - INFO - Starting application...
+2025-06-04 14:32:10 - DEBUG - Loading configuration from config.yaml
+2025-06-04 14:32:10 - INFO - Successfully connected to the database
+2025-06-04 14:32:11 - WARNING - Missing optional field 'email' in user input
+2025-06-04 14:32:11 - ERROR - Failed to process request: KeyError: 'username'
+2025-06-04 14:32:11 - INFO - Shutting down...
